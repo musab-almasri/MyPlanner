@@ -1,0 +1,8 @@
+{
+  "appId": "com.myplanner.app",
+  "appName": "My Planner",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  }
+}
