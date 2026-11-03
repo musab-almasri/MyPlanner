@@ -1,12 +1,13 @@
 {
   "name": "my-planner",
-  "version": "1.0.0",
-  "description": "Personal planner: to-do list, notes and calendar",
+  "version": "2.0.0",
+  "description": "Personal planner: tasks with subtasks, notes and a calendar with repeating events and reminders",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^6.1.2",
     "@capacitor/app": "^6.0.1",
-    "@capacitor/core": "^6.1.2"
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/local-notifications": "^6.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "^6.1.2"

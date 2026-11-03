@@ -4,5 +4,10 @@
   "webDir": "www",
   "android": {
     "allowMixedContent": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "iconColor": "#0d7a6f"
+    }
   }
 }

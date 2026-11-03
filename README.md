@@ -1,46 +1,26 @@
-# My Planner (Android)
+# My Planner (الإصدار 2)
 
-A personal planner with three tabs:
+تطبيق أندرويد شخصي فيه ثلاث تبويبات:
 
-- **Tasks**: add, edit, delete, tick off, optional due date, filter All / To do / Done
-- **Notes**: write, edit, delete and search notes
-- **Calendar**: monthly view, add your own events (title, date, time, details, colour), edit and delete them
+- **المهام:** مهام رئيسية مع مهام فرعية، تعديل وحذف وتحديد كمنجزة، وتاريخ استحقاق اختياري.
+- **الملاحظات:** كتابة وحفظ وبحث.
+- **التقويم:** أحداث وروتين مع تكرار (كل يوم، أيام محددة من الأسبوع، كل عدة أيام، شهريًا) وتذكيرات بإشعارات.
 
-Everything is stored on the phone (localStorage), so it works offline.
+وفيه تبديل بين العربية والإنجليزية، وبين الوضع المظلم والمشرق. كل البيانات محفوظة على الهاتف.
 
-## Get the APK (no installs needed)
+## رفع التحديث على نفس الـ repository
 
-1. Create a new repository on GitHub.
-2. Upload **all files from this folder** (keep the structure, including the hidden `.github` folder), or push with git:
-   ```
-   git init
-   git add .
-   git commit -m "My Planner"
-   git branch -M main
-   git remote add origin https://github.com/<your-name>/<your-repo>.git
-   git push -u origin main
-   ```
-3. Open the **Actions** tab of the repository. The workflow "Build Android APK" starts by itself (about 5 minutes). If it does not, click it and press **Run workflow**.
-4. When it is green, open the run and download **MyPlanner-APK** under *Artifacts*. Unzip it to get `app-debug.apk`.
-5. Copy the APK to your phone and install it (allow "install unknown apps" when asked).
+1. (للأمان) أنشئ Release باسم v1 وأرفق فيه APK القديم قبل أي شيء.
+2. افتح الـ repository ثم **Add file ← Upload files**.
+3. اسحب من هذا المجلد: `www` و`.github` و`debug.keystore` و`package.json` و`capacitor.config.json` و`.gitignore` و`README.md`. الملفات بنفس الأسماء تستبدل القديمة، والقديمة تبقى محفوظة في سجل التعديلات.
+4. اضغط **Commit changes**.
+5. افتح **Actions**، وانتظر نحو 5 دقائق حتى تظهر علامة ✅، ثم نزّل **MyPlanner-APK** من قسم Artifacts.
+6. فك الضغط عنه وثبّت `app-debug.apk`.
 
-## Edit the app
+## ملاحظات
 
-The whole interface lives in `www/index.html` (HTML, CSS and JavaScript in one file).
-Change it, push to GitHub, and a new APK is built automatically. Opening `www/index.html` in a browser also works for quick testing.
-
-## Project layout
-
-```
-www/index.html                  the app
-capacitor.config.json           app name and id (com.myplanner.app)
-package.json                    Capacitor dependencies
-.github/workflows/build-apk.yml builds the APK on GitHub
-```
-
-The `android/` folder is generated during the build, so it is not included.
-
-## Notes
-
-- The APK is a *debug* build: fine for personal use. For Google Play you would need a signed release build.
-- To rename the app, change `appName` in `capacitor.config.json`.
+- النسخة الأولى كانت موقّعة بمفتاح مختلف، لذلك احذفها من الهاتف قبل تثبيت هذه. ملف `debug.keystore` يثبّت التوقيع، فكل التحديثات القادمة تنزل فوق بعضها وتحتفظ ببياناتك.
+- عند أول حدث فيه تذكير سيطلب الهاتف إذن الإشعارات.
+- التذكيرات تُجدول للـ45 يومًا القادمة وتتجدد كلما فتحت التطبيق.
+- واجهة التطبيق كلها في `www/index.html`. عدّله وارفعه وسيُبنى APK جديد تلقائيًا.
+- مجلد `android` يُنشأ أثناء البناء، فلا ترفعه.
