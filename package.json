@@ -1,12 +1,13 @@
 {
   "name": "my-planner",
-  "version": "2.0.0",
-  "description": "Personal planner: tasks with subtasks, notes and a calendar with repeating events and reminders",
+  "version": "3.0.0",
+  "description": "Personal planner: tasks with subtasks, rich notes, calendar with reminders and widget, focus timer",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^6.1.2",
     "@capacitor/app": "^6.0.1",
     "@capacitor/core": "^6.1.2",
+    "@capacitor/haptics": "^6.0.0",
     "@capacitor/local-notifications": "^6.0.0"
   },
   "devDependencies": {
