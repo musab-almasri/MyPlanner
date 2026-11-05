@@ -26,28 +26,23 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Create Android project
-        run: npx cap add android
+      - name: Create Android project (with home screen widget)
+        run: bash scripts/prepare-android.sh widget
 
-      - name: Sync web files into Android project
-        run: npx cap sync android
-
-      - name: Allow notifications and exact reminders
-        run: |
-          f=android/app/src/main/AndroidManifest.xml
-          for p in POST_NOTIFICATIONS SCHEDULE_EXACT_ALARM USE_EXACT_ALARM RECEIVE_BOOT_COMPLETED VIBRATE; do
-            grep -q "android.permission.$p" "$f" || sed -i "s#<application#<uses-permission android:name=\"android.permission.$p\" />\n    <application#" "$f"
-          done
-          grep "uses-permission" "$f"
-
-      - name: Use the fixed signing key (so updates install over older versions)
-        run: |
-          mkdir -p ~/.android
-          cp debug.keystore ~/.android/debug.keystore
-
-      - name: Build debug APK
+      - name: Build APK (with widget)
+        id: build_widget
+        continue-on-error: true
         working-directory: android
         run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Build again without the widget (runs only if the first build failed)
+        if: steps.build_widget.outcome == 'failure'
+        run: |
+          echo "::warning::The build with the widget failed, so the app is built without the widget."
+          bash scripts/prepare-android.sh nowidget
+          cd android
           chmod +x gradlew
           ./gradlew assembleDebug
 
