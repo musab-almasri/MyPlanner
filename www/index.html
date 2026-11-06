@@ -162,11 +162,12 @@ svg.i.solid{fill:currentColor}
 .note .dt{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .nb{display:inline-flex;align-items:center;gap:3px}
 .nb svg{width:13px;height:13px}
-.sheet.note{display:flex;flex-direction:column;overflow:hidden;height:92%;max-height:92%}
-.nbody{flex:1;min-height:120px;overflow-y:auto;margin-top:12px;display:flex;flex-direction:column;gap:6px;padding-bottom:8px}
-.blk-text{border:0;background:transparent;padding:6px 2px;margin:0;resize:none;min-height:36px;overflow:hidden;line-height:1.6;font-size:16px;border-radius:6px}
+.sheet.notesheet{display:flex;flex-direction:column;overflow:hidden;height:92%;max-height:92%}
+.nbody{flex:1;min-height:120px;overflow-y:auto;margin-top:12px;display:block;padding-bottom:8px;width:100%}
+.nbody>*{margin-bottom:6px}
+.blk-text{display:block;width:100%!important;min-width:100%;max-width:100%;box-sizing:border-box;border:0;background:transparent;padding:6px 2px;margin:0 0 6px;resize:none;min-height:36px;overflow:hidden;line-height:1.6;font-size:16px;border-radius:6px}
 .blk-text:focus{outline:none;background:var(--bg)}
-.blk{position:relative;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:8px 6px 8px 12px;padding-inline:12px 6px}
+.blk{width:100%;box-sizing:border-box;position:relative;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:8px 6px 8px 12px;padding-inline:12px 6px}
 .aplay{width:40px;height:40px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
 .abar{flex:1;height:6px;border-radius:3px;background:var(--accent-soft);overflow:hidden}
 .abar i{display:block;height:100%;width:0;background:var(--accent)}
@@ -316,7 +317,7 @@ svg.i.solid{fill:currentColor}
 </div></div>
 
 <!-- Note sheet -->
-<div class="modal" id="m-note" data-sticky="1"><div class="sheet note">
+<div class="modal" id="m-note" data-sticky="1"><div class="sheet notesheet">
   <h2 id="mn-title"></h2>
   <label for="mn-t" data-i18n="title"></label>
   <input id="mn-t" data-i18n-ph="title" autocomplete="off">
